@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 17, 2019 at 11:58 AM
+-- Generation Time: Apr 20, 2019 at 07:34 AM
 -- Server version: 10.3.13-MariaDB
 -- PHP Version: 7.3.3
 
@@ -75,6 +75,13 @@ CREATE TABLE `ktp` (
   `kewarganegaraan` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `ktp`
+--
+
+INSERT INTO `ktp` (`nik`, `nama`, `tanggal_lahir`, `tempat_lahir`, `jekel`, `alamat`, `rt`, `rw`, `agama`, `kewarganegaraan`) VALUES
+(1231231, 'sssss', '2019-04-01', 'banjarmasin', 'laki-laki', 'aaaaa', '3', '2', 'islam', 'WNI');
+
 -- --------------------------------------------------------
 
 --
@@ -93,9 +100,18 @@ CREATE TABLE `saran` (
 --
 
 CREATE TABLE `user` (
+  `id` int(100) NOT NULL,
   `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hak_akses` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `hak_akses`) VALUES
+(1, 'admin', '$2y$10$PQoM7kJJEQ3MpEIRglI/supSWRjxb65zymOafthLHmOZxGCSSmS5W', 0);
 
 --
 -- Indexes for dumped tables
@@ -108,6 +124,12 @@ ALTER TABLE `akte_kelahiran`
   ADD PRIMARY KEY (`id_akte`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -116,6 +138,12 @@ ALTER TABLE `akte_kelahiran`
 --
 ALTER TABLE `akte_kelahiran`
   MODIFY `id_akte` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

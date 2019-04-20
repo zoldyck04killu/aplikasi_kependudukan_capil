@@ -13,6 +13,43 @@ class Admin
     $this->mysqli = $mysqli;
   }
 
+  // daftar (register) masyarakat/users
+
+  function simpanUsername($Username, $password_hash)
+  {
+    $db = $this->mysqli->conn;
+    // jika hak_akses 0 adalah Admin
+    // jika hak_akses 1 adalah users
+    $hak_akses = 1;
+    $db->query("INSERT INTO user (username, password, hak_akses) VALUES ('$Username','$password_hash','$hak_akses')") or die ($db->error);
+    return true;
+  }
+
+  // LOGIN
+
+  public function login($username, $password){
+    // jika hak_akses 0 adalah Admin
+    // jika hak_akses 1 adalah users
+  $db = $this->mysqli->conn;
+  $userdata = $db->query("SELECT * FROM user WHERE username = '$username' ") or die ($db->error);
+  $cek = $userdata->num_rows;
+  $cek_2 = $userdata->fetch_array();
+          if (password_verify($password, $cek_2['password'])) {
+              $_SESSION['user'] = $cek_2['username'];
+              $_SESSION['hak_akses'] = $cek_2['hak_akses']; //session
+               //session
+              return true;
+          } else {
+              return false; // password salah
+          }
+  }
+
+  public function logout(){
+    @$_SESSION['user'] == FALSE;
+    @$_SESSION['hak_akses'] == FALSE;
+    unset($_SESSION);
+    session_destroy();
+  }
 
   // KTP
 

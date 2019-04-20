@@ -32,22 +32,25 @@ $objAdmin = new Admin($obj);
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">CAPIL Tabalong</a>
+  <a class="navbar-brand" href="?view=home">CAPIL Tabalong</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Beranda
+        <a class="nav-link" href="?view=home">Beranda
           <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
-      </li>
+      <?php if (@$_SESSION['user']) { ?>
+        <li class="nav-item">
+          <a class="nav-link" href="?view=logout">Logout</a>
+        </li>
+      <?php }else{ ?>
+          <li class="nav-item">
+            <a class="nav-link" href="?view=login">Login</a>
+          </li>
+      <?php } ?>
       <li class="nav-item">
         <a class="nav-link" href="#">Saran</a>
       </li>
@@ -59,6 +62,8 @@ $objAdmin = new Admin($obj);
           <a class="dropdown-item" href="?view=daftar-ktp">KTP</a>
           <a class="dropdown-item" href="?view=daftar-kk">Kartu Keluarga</a>
           <a class="dropdown-item" href="?view=daftar-akte">Akte Kelahiran</a>
+          <a class="dropdown-item" href="?view=daftar-users">Users</a>
+
         </div>
       </li>
     </ul>

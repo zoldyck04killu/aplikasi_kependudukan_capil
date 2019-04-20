@@ -1,36 +1,36 @@
 <div class="header-hal">
-    <h1>LOGIN ADMIN</h1>
+    <h1>LOGIN</h1>
     <hr>
 </div>
 
-<div class="form">
-    <form method="post" action="">
-      <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Username</label>
-        <div class="col-sm-10">
-            <input class="form-control" type="text" placeholder="Username" name="username">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-10">
-            <input class="form-control" type="password" placeholder="Password" name="password">
-        </div>
-      </div>
+<div class="container" id="" style="">
 
-      <button type="submit" class="btn btn-primary" name="login">Login</button>
-      <a class="text-secondary" href="?view=register-admin ">
-          Register
-      </a>
-    </form>
+	<form class="" id="" method="POST" action="">
+
+		<table align="center">
+				<tr>
+					<td> <h4>Username</h4> </td>
+					<td> <input type="text" class="form-control" name="Username" placeholder="Username"> </td>
+				</tr>
+				<tr>
+					<td> <h4>Password</h4> </td>
+					<td> <input type="password" class="form-control" name="Password" placeholder="Password"> </td>
+				</tr>
+
+				<tr>
+					<td> <input type="submit" class="btn btn-md btn-primary" name="login" value="Login"> </td>
+				</tr>
+		</table>
+	</form>
+
 </div>
 
 
 <?php
 
 if (isset($_POST['login'])) {
-  $username = $obj->conn->real_escape_string($_POST['username']);
-  $password = $obj->conn->real_escape_string($_POST['password']);
+  $username = $obj->conn->real_escape_string($_POST['Username']);
+  $password = $obj->conn->real_escape_string($_POST['Password']);
   // login
   $login = $objAdmin->login($username, $password);
   if ($login) {
