@@ -59,9 +59,9 @@ $objAdmin = new Admin($obj);
           Pendaftaran
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="?view=daftar-ktp">KTP</a>
-          <a class="dropdown-item" href="?view=daftar-kk">Kartu Keluarga</a>
-          <a class="dropdown-item" href="?view=daftar-akte">Akte Kelahiran</a>
+          <a class="dropdown-item" href="?view=data-ktp">KTP</a>
+          <a class="dropdown-item" href="?view=data-kk">Kartu Keluarga</a>
+          <a class="dropdown-item" href="?view=data-akte">Akte Kelahiran</a>
           <a class="dropdown-item" href="?view=daftar-users">Users</a>
 
         </div>
