@@ -214,6 +214,27 @@ class Admin
 
   // END AKTE
 
+  // SARAN
+  public function insertSaran($nik, $saran)
+  {
+      $db = $this->mysqli->conn;
+      $sql = " INSERT INTO saran VALUES ('$nik', '$saran') ";
+      $query = $db->query($sql);
+      if ($query) {
+        return true;
+      }else{
+        return false;
+      }
+  }
+
+  public function showSaran()
+  {
+    $db = $this->mysqli->conn;
+    $sql = " SELECT * FROM saran ";
+    $query = $db->query($sql);
+    return $query;
+  }
+
 }// end class
 
 ?>

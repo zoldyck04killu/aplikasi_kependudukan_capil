@@ -104,6 +104,14 @@ else if (@$_GET['view'] == 'daftar-users')
   include 'view/masyarakat/daftar-users.php';
 }
 
+elseif (@$_GET['view'] == 'saran')
+{
+  include 'view/saran/saran.php';
+}
+elseif (@$_GET['view'] == 'data-saran')
+{
+  include 'view/saran/data-saran.php';
+}
 
 
 

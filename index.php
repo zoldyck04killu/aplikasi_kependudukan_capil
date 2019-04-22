@@ -52,7 +52,7 @@ $objAdmin = new Admin($obj);
           </li>
       <?php } ?>
       <li class="nav-item">
-        <a class="nav-link" href="#">Saran</a>
+        <a class="nav-link" href="?view=data-saran">Saran</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
