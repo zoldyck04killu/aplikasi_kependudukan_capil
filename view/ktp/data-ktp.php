@@ -1,7 +1,9 @@
 <div class="header-hal">
     <h1>Data KTP</h1>
     <hr>
+    <?php if (@$_SESSION['hak_akses'] == 0) { ?>
     <a href="?view=daftar-ktp" class="btn btn-sm btn-primary">Register KTP</a>
+  <?php } ?>
 </div>
 <div class="container mt-5">
 

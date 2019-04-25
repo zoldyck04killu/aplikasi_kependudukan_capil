@@ -51,9 +51,12 @@ $objAdmin = new Admin($obj);
             <a class="nav-link" href="?view=login">Login</a>
           </li>
       <?php } ?>
+      <?php if (@$_SESSION['user']){ ?>
       <li class="nav-item">
         <a class="nav-link" href="?view=data-saran">Saran</a>
       </li>
+    <?php } ?>
+    <?php if (@$_SESSION['hak_akses'] == 0) { ?>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Pendaftaran
@@ -63,9 +66,9 @@ $objAdmin = new Admin($obj);
           <a class="dropdown-item" href="?view=data-kk">Kartu Keluarga</a>
           <a class="dropdown-item" href="?view=data-akte">Akte Kelahiran</a>
           <a class="dropdown-item" href="?view=daftar-users">Users</a>
-
         </div>
       </li>
+    <?php } ?>
     </ul>
   </div>
 </nav>

@@ -1,7 +1,9 @@
 <div class="header-hal">
     <h1>Data Kartu Keluarga</h1>
     <hr>
+    <?php if (@$_SESSION['hak_akses'] == 0) { ?>
     <a href="?view=daftar-kk" class="btn btn-sm btn-primary">Register KK</a>
+  <?php } ?>
 </div>
 <div class="container mt-5">
 
@@ -18,7 +20,9 @@
         <th>KODE KABUPATEN</th>
         <th>KODE KECAMATAN</th>
         <th>KODE KELURAHAN</th>
+        <?php if (@$_SESSION['hak_akses'] == 0) { ?>
         <th>PILIHAN</th>
+        <?php } ?>
       </tr>
     </thead>
     <tbody>
@@ -36,12 +40,14 @@
         <td><?=$a->kodenokab ?></td>
         <td><?=$a->kdoenokec ?></td>
         <td><?=$a->kodenokel ?></td>
+        <?php if (@$_SESSION['hak_akses'] == 0) { ?>
         <td>
           <div class="btn-group">
             <a href="?view=edit-kk&nik=<?=$a->nik ?>" class="btn btn-sm btn-info">Edit</a>
             <a href="?view=hapus-kk&nik=<?=$a->nik ?>" onclick="return confirm('Hapus data ?')" class="btn btn-sm btn-danger">Hapus</a>
           </div>
         </td>
+        <?php } ?>
       </tr>
     <?php } ?>
     </tbody>
