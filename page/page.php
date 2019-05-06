@@ -112,6 +112,10 @@ elseif (@$_GET['view'] == 'data-saran')
 {
   include 'view/saran/data-saran.php';
 }
+elseif (@$_GET['view'] == 'pendaftaran')
+{
+  include 'view/pendaftaran.php';
+}
 
 
 

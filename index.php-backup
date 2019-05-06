@@ -31,40 +31,48 @@ $objAdmin = new Admin($obj);
 
   </head>
   <body>
-
-<div class="container">
-  <div class="row header-atas">
-    <div class="col-sm">
-      <center>
-      <a  href="?view=home">
-        <button type="button" class="btn btn-outline-dark btn-sm">Beranda</button>
-      </a>
-
-      <?php if (@$_SESSION['hak_akses'] == 0) { ?>
-        <a c href="?view=pendaftaran">
-          <button type="button" class="btn btn-outline-dark btn-sm">Pendaftaran</button>
-        </a>
-      <?php } ?>
-
-      <?php if (@$_SESSION['user']){ ?>
-      <a  href="?view=data-saran">
-        <button type="button" class="btn btn-outline-dark btn-sm">Saran</button>
-      </a>
-    <?php } ?>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="?view=home">CAPIL Tabalong</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="?view=home">Beranda
+          <span class="sr-only">(current)</span></a>
+      </li>
       <?php if (@$_SESSION['user']) { ?>
-        <a href="?view=logout">
-          <button type="button" class="btn btn-outline-dark btn-sm">Logout</button>
-        </a>
+        <li class="nav-item">
+          <a class="nav-link" href="?view=logout">Logout</a>
+        </li>
       <?php }else{ ?>
-        <a  href="?view=login">
-          <button type="button" class="btn btn-outline-dark btn-sm">Login</button>
-        </a>
+          <li class="nav-item">
+            <a class="nav-link" href="?view=login">Login</a>
+          </li>
       <?php } ?>
-      </center>
-    </div>
+      <?php if (@$_SESSION['user']){ ?>
+      <li class="nav-item">
+        <a class="nav-link" href="?view=data-saran">Saran</a>
+      </li>
+    <?php } ?>
+    <?php if (@$_SESSION['hak_akses'] == 0) { ?>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Pendaftaran
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="?view=data-ktp">KTP</a>
+          <a class="dropdown-item" href="?view=data-kk">Kartu Keluarga</a>
+          <a class="dropdown-item" href="?view=data-akte">Akte Kelahiran</a>
+          <a class="dropdown-item" href="?view=daftar-users">Users</a>
+        </div>
+      </li>
+    <?php } ?>
+    </ul>
   </div>
-</div>
+</nav>
+
 
 
         <!-- MAIN -->
@@ -83,11 +91,3 @@ $objAdmin = new Admin($obj);
     } );
 </script>
 </html>
-
-<style media="screen">
-  .header-atas .col-sm button
-  {
-      width: 200px;
-      margin: 20px 30px;
-  }
-</style>

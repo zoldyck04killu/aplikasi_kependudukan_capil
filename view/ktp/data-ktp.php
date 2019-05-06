@@ -2,7 +2,7 @@
     <h1>Data KTP</h1>
     <hr>
     <?php if (@$_SESSION['hak_akses'] == 0) { ?>
-    <a href="?view=daftar-ktp" class="btn btn-sm btn-primary">Register KTP</a>
+    <a href="?view=daftar-ktp" class="btn btn-sm btn-primary">Daftar KTP</a>
   <?php } ?>
 </div>
 <div class="container mt-5">

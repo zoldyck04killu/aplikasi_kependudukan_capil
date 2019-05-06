@@ -2,7 +2,7 @@
     <h1>Data Akte</h1>
     <hr>
     <?php if (@$_SESSION['hak_akses'] == 0) { ?>
-    <a href="?view=daftar-akte" class="btn btn-sm btn-primary">Register Akte</a>
+    <a href="?view=daftar-akte" class="btn btn-sm btn-primary">Daftar Akte</a>
     <?php } ?>
 </div>
 <div class="container mt-5">

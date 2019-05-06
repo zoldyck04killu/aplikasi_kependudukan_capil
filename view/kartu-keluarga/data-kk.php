@@ -2,7 +2,7 @@
     <h1>Data Kartu Keluarga</h1>
     <hr>
     <?php if (@$_SESSION['hak_akses'] == 0) { ?>
-    <a href="?view=daftar-kk" class="btn btn-sm btn-primary">Register KK</a>
+    <a href="?view=daftar-kk" class="btn btn-sm btn-primary">Daftar KK</a>
   <?php } ?>
 </div>
 <div class="container mt-5">

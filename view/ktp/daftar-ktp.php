@@ -6,7 +6,7 @@
 <div class="container" id="" style="">
 
 	<form class="" id="" method="POST" action="">
-	 
+
 		<table align="center">
 				<tr>
 					<td> <h4>NIK</h4> </td>
@@ -26,11 +26,11 @@
 				</tr>
 				<tr>
 					<td> <h4>JENIS KELAMIN</h4> </td>
-					<td> 
+					<td>
 						<select name="JEKEL" class="form-control">
 						<option value="laki-laki">Laki-Laki</option>
 						<option value="perempuan">Perempuan</option>
-						</select> 
+						</select>
 					</td>
 				</tr>
 				<tr>
@@ -58,10 +58,10 @@
 </div>
 
 
-<?php 
+<?php
 
 if (isset($_POST['simpan'])) {
-	
+
 	$nik 		  = $_POST['NIK'];
 	$nama         = $_POST['NAMA'];
 	$tgl_lahir    = $_POST['TGL_LAHIR'];
