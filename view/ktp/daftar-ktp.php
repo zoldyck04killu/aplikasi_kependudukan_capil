@@ -77,11 +77,11 @@ if (isset($_POST['simpan'])) {
 
 	if ($insert) {
 		echo '
-			<script> alert("Register berhasil") </script>
+			<script> alert("Berhasil") </script>
 		';
 	}else{
 		echo '
-			<script> alert("Register gagal") </script>
+			<script> alert("Gagal") </script>
 		';
 	}
 }

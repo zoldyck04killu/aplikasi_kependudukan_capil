@@ -117,7 +117,46 @@ elseif (@$_GET['view'] == 'pendaftaran')
   include 'view/pendaftaran.php';
 }
 
+elseif (@$_GET['view'] == 'status-cetak-ktp')
+{
+  $id = @$_GET['nik'];
+  $status = @$_GET['status'];
 
+  $objAdmin->statusCetakKTP($id,$status);
+  echo '
+    <script>
+    window.location = "?view=data-ktp"
+    </script>
+
+  ';
+}
+elseif (@$_GET['view'] == 'status-cetak-akte')
+{
+  $id = @$_GET['nik'];
+  $status = @$_GET['status'];
+
+  $objAdmin->statusCetakAKTE($id,$status);
+  echo '
+    <script>
+    window.location = "?view=data-akte"
+    </script>
+
+  ';
+}
+
+elseif (@$_GET['view'] == 'status-cetak-kk')
+{
+  $id = @$_GET['nik'];
+  $status = @$_GET['status'];
+
+  $objAdmin->statusCetakKK($id,$status);
+  echo '
+    <script>
+    window.location = "?view=data-kk"
+    </script>
+
+  ';
+}
 
 
 else

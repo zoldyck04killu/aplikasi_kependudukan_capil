@@ -56,7 +56,10 @@ class Admin
   public function insertKTP($nik, $nama, $tgl_lahir, $tempat_lahir, $jekel, $alamat, $rt, $rw, $agama, $kewar)
   {
 	  	$db  = $this->mysqli->conn;
-	  	$sql = " INSERT INTO ktp  VALUES ('$nik', '$nama', '$tgl_lahir', '$tempat_lahir', '$jekel', '$alamat', '$rt', '$rw', '$agama', '$kewar') " ;
+      $date_permohonan = date('Y/m/d');
+	  	$sql = " INSERT INTO ktp  VALUES ('$nik', '$nama', '$tgl_lahir', '$tempat_lahir', '$jekel', '$alamat', '$rt', '$rw', '$agama', '$kewar','0','$date_permohonan') " ;
+      $query = $db->query($sql);
+      $sql = " INSERT INTO hasil_cetak (NIK,nama,tgl_permohonan,jenis_permohonan) VALUES ('$nik','$nama','$date_permohonan','KTP') " ;
 	  	$query = $db->query($sql);
 	  	if ($query) {
 	  		return true;
@@ -99,6 +102,8 @@ class Admin
     $db = $this->mysqli->conn;
     $sql = " DELETE FROM ktp WHERE nik = '$nik' ";
     $query = $db->query($sql);
+    $sql = " DELETE FROM hasil_cetak WHERE NIK = '$nik' && jenis_permohonan = 'KTP' ";
+    $query = $db->query($sql);
     return true;
   }
 
@@ -110,7 +115,11 @@ class Admin
   public function insertKK($nik, $nama, $alamat, $pos, $tlp, $pro, $kab, $kec, $kel)
   {
   		$db = $this->mysqli->conn;
-  		$sql = " INSERT INTO kartu_keluarga VALUES ('$nik', '$nama', '$alamat', '$pos', '$tlp', '$pro', '$kab', '$kec', '$kel') ";
+      $date_permohonan = date('Y/m/d');
+
+  		$sql = " INSERT INTO kartu_keluarga VALUES ('$nik', '$nama', '$alamat', '$pos', '$tlp', '$pro', '$kab', '$kec', '$kel','0','$date_permohonan') ";
+  		$query = $db->query($sql);
+      $sql = " INSERT INTO hasil_cetak (NIK,nama,tgl_permohonan,jenis_permohonan) VALUES ('$nik','$nama','$date_permohonan','Kartu Keluarga') ";
   		$query = $db->query($sql);
   		if ($query) {
 	  		return true;
@@ -152,6 +161,8 @@ class Admin
     $db = $this->mysqli->conn;
     $sql = " DELETE FROM kartu_keluarga WHERE nik = '$nik' ";
     $query = $db->query($sql);
+    $sql = " DELETE FROM hasil_cetak WHERE NIK = '$nik' && jenis_permohonan = 'Kartu Keluarga' ";
+    $query = $db->query($sql);
     return true;
   }
 
@@ -163,7 +174,11 @@ class Admin
   public function insertAKTE($id, $nama, $tgl, $tempat, $ayah, $ibu, $ke)
   {
   		$db = $this->mysqli->conn;
-  		$sql = " INSERT INTO akte_kelahiran VALUES ('$id', '$nama', '$tgl', '$tempat', '$ayah', '$ibu', '$ke') ";
+      $date_permohonan = date('Y/m/d');
+
+  		$sql = " INSERT INTO akte_kelahiran VALUES ('$id', '$nama', '$tgl', '$tempat', '$ayah', '$ibu', '$ke','0','$date_permohonan') ";
+  		$query = $db->query($sql);
+      $sql = " INSERT INTO hasil_cetak (NIK,nama,tgl_permohonan,jenis_permohonan) VALUES ('$id','$nama','$date_permohonan','Akte Kelahiran') ";
   		$query = $db->query($sql);
   		if ($query) {
 	  		return true;
@@ -205,6 +220,8 @@ class Admin
     $db = $this->mysqli->conn;
     $sql = " DELETE FROM akte_kelahiran WHERE id_akte = '$id' ";
     $query = $db->query($sql);
+    $sql = " DELETE FROM hasil_cetak WHERE NIK = '$id' && jenis_permohonan = 'Akte Kelahiran'";
+    $query = $db->query($sql);
     if ($query) {
         return true;
     }else{
@@ -231,6 +248,71 @@ class Admin
   {
     $db = $this->mysqli->conn;
     $sql = " SELECT * FROM saran ";
+    $query = $db->query($sql);
+    return $query;
+  }
+
+  public function statusCetakKTP($id,$status)
+  {
+    $db = $this->mysqli->conn;
+    if ($status == 0) {
+        $status_baru = 1;
+    }else {
+      $status_baru = 0;
+    }
+    $sql = " UPDATE ktp SET status_cetak = '$status_baru' WHERE nik = '$id' ";
+    $query = $db->query($sql);
+    $sql = " UPDATE hasil_cetak SET status = '$status_baru' WHERE NIK = '$id' ";
+    $query = $db->query($sql);
+    if ($query) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  public function statusCetakAKTE($id,$status)
+  {
+    $db = $this->mysqli->conn;
+    if ($status == 0) {
+        $status_baru = 1;
+    }else {
+      $status_baru = 0;
+    }
+    $sql = " UPDATE akte_kelahiran SET status_cetak = '$status_baru' WHERE id_akte = '$id' ";
+    $query = $db->query($sql);
+    $sql = " UPDATE hasil_cetak SET status = '$status_baru' WHERE NIK = '$id' ";
+    $query = $db->query($sql);
+    if ($query) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  public function statusCetakKK($id,$status)
+  {
+    $db = $this->mysqli->conn;
+    if ($status == 0) {
+        $status_baru = 1;
+    }else {
+      $status_baru = 0;
+    }
+    $sql = " UPDATE kartu_keluarga SET status_cetak = '$status_baru' WHERE nik = '$id' ";
+    $query = $db->query($sql);
+    $sql = " UPDATE hasil_cetak SET status = '$status_baru' WHERE NIK = '$id' ";
+    $query = $db->query($sql);
+    if ($query) {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  public function showHasilCetak()
+  {
+    $db = $this->mysqli->conn;
+    $sql = " SELECT * FROM hasil_cetak ";
     $query = $db->query($sql);
     return $query;
   }

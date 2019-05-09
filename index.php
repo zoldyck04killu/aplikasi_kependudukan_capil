@@ -40,17 +40,19 @@ $objAdmin = new Admin($obj);
         <button type="button" class="btn btn-outline-dark btn-sm">Beranda</button>
       </a>
 
-      <?php if (@$_SESSION['hak_akses'] == 0) { ?>
         <a c href="?view=pendaftaran">
           <button type="button" class="btn btn-outline-dark btn-sm">Pendaftaran</button>
         </a>
-      <?php } ?>
 
       <?php if (@$_SESSION['user']){ ?>
       <a  href="?view=data-saran">
         <button type="button" class="btn btn-outline-dark btn-sm">Saran</button>
       </a>
-    <?php } ?>
+      <?php }else{ ?>
+      <a  href="?view=saran">
+        <button type="button" class="btn btn-outline-dark btn-sm">Saran</button>
+      </a>
+      <?php } ?>
 
       <?php if (@$_SESSION['user']) { ?>
         <a href="?view=logout">
@@ -88,6 +90,6 @@ $objAdmin = new Admin($obj);
   .header-atas .col-sm button
   {
       width: 200px;
-      margin: 20px 30px;
+      margin: 20px 35px;
   }
 </style>

@@ -6,7 +6,7 @@
 <div class="container" id="" style="">
 
 	<form class="" id="" method="POST" action="">
-	 
+
 		<table align="center">
 				<tr>
 					<td> <h4>ID AKTE</h4> </td>
@@ -45,10 +45,10 @@
 </div>
 
 
-<?php 
+<?php
 
 if (isset($_POST['simpan'])) {
-	
+
 	$id 	   = $_POST['ID'];
 	$nama      = $_POST['NAMA'];
 	$tgl       = $_POST['TGL'];
@@ -61,11 +61,11 @@ if (isset($_POST['simpan'])) {
 
 	if ($insert) {
 		echo '
-			<script> alert("Register berhasil") </script>
+			<script> alert("Berhasil") </script>
 		';
 	}else{
 		echo '
-			<script> alert("Register gagal") </script>
+			<script> alert("Gagal") </script>
 		';
 	}
 }

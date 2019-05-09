@@ -9,10 +9,23 @@
     <a  href="?view=data-akte">
       <button type="button" class="btn btn-outline-dark btn-lg btn-block">AKTE KELAHIRAN</button>
     </a>
-    <a  href="?view=daftar-users">
+    <!-- <a  href="?view=daftar-users">
       <button type="button" class="btn btn-outline-dark btn-lg btn-block">USER</button>
+    </a> -->
+    <!-- <a  href="view/laporan/laporan-pendaftaran-penduduk-KTP.php">
+      <button type="button" class="btn btn-outline-dark btn-lg btn-block">LAPORAN KTP</button>
     </a>
-
+    <a  href="view/laporan/laporan-pendaftaran-penduduk-AKTE.php">
+      <button type="button" class="btn btn-outline-dark btn-lg btn-block">LAPORAN AKTE</button>
+    </a>
+    <a  href="view/laporan/laporan-pendaftaran-penduduk-KK.php">
+      <button type="button" class="btn btn-outline-dark btn-lg btn-block">LAPORAN KK</button>
+    </a> -->
+    <?php if (@$_SESSION['hak_akses'] == 2) { ?>
+    <a  href="view/laporan/laporan-pendaftaran-penduduk.php">
+      <button type="button" class="btn btn-outline-dark btn-lg btn-block">LAPORAN </button>
+    </a>
+  <?php } ?>
   </center>
 </div>
 

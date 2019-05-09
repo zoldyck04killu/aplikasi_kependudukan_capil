@@ -1,3 +1,4 @@
 working :
-laporan
-halaman utama desain
+laporan <done>
+halaman utama desain <done>
+tombol sudah pernah cetak atau belum <done>

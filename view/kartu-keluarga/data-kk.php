@@ -1,7 +1,7 @@
 <div class="header-hal">
     <h1>Data Kartu Keluarga</h1>
     <hr>
-    <?php if (@$_SESSION['hak_akses'] == 0) { ?>
+    <?php if (@$_SESSION['hak_akses'] == 2) { ?>
     <a href="?view=daftar-kk" class="btn btn-sm btn-primary">Daftar KK</a>
   <?php } ?>
 </div>
@@ -20,8 +20,9 @@
         <th>KODE KABUPATEN</th>
         <th>KODE KECAMATAN</th>
         <th>KODE KELURAHAN</th>
-        <?php if (@$_SESSION['hak_akses'] == 0) { ?>
+        <?php if (@$_SESSION['hak_akses'] == 2) { ?>
         <th>PILIHAN</th>
+        <th>STATUS CETAK</th>
         <?php } ?>
       </tr>
     </thead>
@@ -40,7 +41,18 @@
         <td><?=$a->kodenokab ?></td>
         <td><?=$a->kdoenokec ?></td>
         <td><?=$a->kodenokel ?></td>
-        <?php if (@$_SESSION['hak_akses'] == 0) { ?>
+        <?php if (@$_SESSION['hak_akses'] == 2) { ?>
+          <td>
+            <?php
+            if ($a->status_cetak == 0) { ?>
+              <a href="?view=status-cetak-kk&nik=<?=$a->nik ?>&status=<?=$a->status_cetak ?>" class="btn btn-sm btn-dark">Belum Cetak</a>
+            <?php
+            }else{ ?>
+            <a href="?view=status-cetak-kk&nik=<?=$a->nik ?>&status=<?=$a->status_cetak ?>" class="btn btn-sm btn-success">Sudah Cetak</a>
+            <?php
+            }
+            ?>
+          </td>
         <td>
           <div class="btn-group">
             <a href="?view=edit-kk&nik=<?=$a->nik ?>" class="btn btn-sm btn-info">Edit</a>

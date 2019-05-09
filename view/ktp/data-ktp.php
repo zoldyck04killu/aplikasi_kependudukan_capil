@@ -1,7 +1,7 @@
 <div class="header-hal">
     <h1>Data KTP</h1>
     <hr>
-    <?php if (@$_SESSION['hak_akses'] == 0) { ?>
+    <?php if (@$_SESSION['hak_akses'] == 2) { ?>
     <a href="?view=daftar-ktp" class="btn btn-sm btn-primary">Daftar KTP</a>
   <?php } ?>
 </div>
@@ -21,7 +21,10 @@
         <th>RW</th>
         <th>AGAMA</th>
         <th>NEGARA</th>
+        <?php if (@$_SESSION['hak_akses'] == 2) { ?>
+        <th>STATUS CETAK</th>
         <th>PILIHAN</th>
+        <?php } ?>
       </tr>
     </thead>
     <tbody>
@@ -40,6 +43,18 @@
         <td><?=$a->rw ?></td>
         <td><?=$a->agama ?></td>
         <td><?=$a->kewarganegaraan ?></td>
+        <?php if (@$_SESSION['hak_akses'] == 2) { ?>
+        <td>
+          <?php
+          if ($a->status_cetak == 0) { ?>
+            <a href="?view=status-cetak-ktp&nik=<?=$a->nik ?>&status=<?=$a->status_cetak ?>" class="btn btn-sm btn-dark">Belum Cetak</a>
+          <?php
+          }else{ ?>
+          <a href="?view=status-cetak-ktp&nik=<?=$a->nik ?>&status=<?=$a->status_cetak ?>" class="btn btn-sm btn-success">Sudah Cetak</a>
+          <?php
+          }
+          ?>
+        </td>
         <td>
           <div class="btn-group">
             <a href="?view=edit-ktp&nik=<?=$a->nik ?>" class="btn btn-sm btn-info">Edit</a>
@@ -47,6 +62,7 @@
           </div>
         </td>
       </tr>
+    <?php } ?>
     <?php } ?>
     </tbody>
   </table>
