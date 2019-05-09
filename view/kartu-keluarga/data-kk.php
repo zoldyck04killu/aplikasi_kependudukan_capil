@@ -1,7 +1,7 @@
 <div class="header-hal">
     <h1>Data Kartu Keluarga</h1>
     <hr>
-    <?php if (@$_SESSION['hak_akses'] == 2) { ?>
+    <?php if (@$_SESSION['user']) { ?>
     <a href="?view=daftar-kk" class="btn btn-sm btn-primary">Daftar KK</a>
   <?php } ?>
 </div>

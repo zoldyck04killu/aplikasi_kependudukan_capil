@@ -44,7 +44,7 @@ $objAdmin = new Admin($obj);
           <button type="button" class="btn btn-outline-dark btn-sm">Pendaftaran</button>
         </a>
 
-      <?php if (@$_SESSION['user']){ ?>
+      <?php if (@$_SESSION['hak_akses'] == 2) { ?>
       <a  href="?view=data-saran">
         <button type="button" class="btn btn-outline-dark btn-sm">Saran</button>
       </a>

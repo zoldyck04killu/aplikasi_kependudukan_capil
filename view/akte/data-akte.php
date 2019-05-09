@@ -1,9 +1,9 @@
 <div class="header-hal">
     <h1>Data Akte</h1>
     <hr>
-    <?php if (@$_SESSION['hak_akses'] == 2) { ?>
+    <?php if (@$_SESSION['user']) { ?>
     <a href="?view=daftar-akte" class="btn btn-sm btn-primary">Daftar Akte</a>
-    <?php } ?>
+  <?php } ?>
 </div>
 <div class="container mt-5">
 

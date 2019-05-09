@@ -9,7 +9,7 @@
 
 		<table align="center">
 				<tr>
-					<td> <h4>Username</h4> </td>
+					<td> <h4>NIK</h4> </td>
 					<td> <input type="text" class="form-control" name="Username" placeholder="Username"> </td>
 				</tr>
 				<tr>
