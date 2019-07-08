@@ -15,9 +15,10 @@ $data = $objAdmin->editAKTE($id)->fetch_object();
 	<form class="" id="" method="POST" action="">
 
 		<table align="center">
+        <input type="hidden" name="id_akte" value="<?=$data->id_akte ?>">
 				<tr>
-					<td> <h4>ID AKTE</h4> </td>
-					<td> <input type="text" class="form-control" name="ID" placeholder="Masukan ID" value="<?=$data->id_akte ?>" readonly> </td>
+					<td> <h4>No AKTE</h4> </td>
+					<td> <input type="text" class="form-control" name="ID" placeholder="Masukan ID" value="<?=$data->no_akte ?>" readonly> </td>
 				</tr>
 				<tr>
 					<td> <h4>NAMA</h4> </td>
@@ -55,7 +56,7 @@ $data = $objAdmin->editAKTE($id)->fetch_object();
 <?php
 
 if (isset($_POST['update'])) {
-
+  $id_akte	     = $_POST['id_akte'];
 	$id 	     = $_POST['ID'];
 	$nama      = $_POST['NAMA'];
 	$tgl       = $_POST['TGL'];
@@ -64,7 +65,7 @@ if (isset($_POST['update'])) {
 	$ibu       = $_POST['IBU'];
 	$ke        = $_POST['KE'];
 
-	$update = $objAdmin->updateAKTE($id, $nama, $tgl, $tempat, $ayah, $ibu, $ke);
+	$update = $objAdmin->updateAKTE($id_akte,$id, $nama, $tgl, $tempat, $ayah, $ibu, $ke);
 
 	if ($update) {
     echo '

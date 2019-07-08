@@ -9,9 +9,10 @@
 
 		<table align="center">
 				<tr>
-					<td> <h4>ID AKTE</h4> </td>
-					<td> <input type="text" class="form-control" name="ID" placeholder="Masukan ID"> </td>
+					<td> <h4>No AKTE</h4> </td>
+					<td> <input type="text" class="form-control" name="ID" placeholder="Masukan No Akte"> </td>
 				</tr>
+
 				<tr>
 					<td> <h4>NAMA</h4> </td>
 					<td> <input type="text" class="form-control" name="NAMA" placeholder="Nama Lengkap"> </td>

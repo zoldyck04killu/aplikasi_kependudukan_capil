@@ -6,11 +6,11 @@
 <div class="container" id="" style="">
 
 	<form class="" id="" method="POST" action="">
-	 
+
 		<table align="center">
 				<tr>
 					<td> <h4>NIK</h4> </td>
-					<td> <input type="number" class="form-control" name="NIK" placeholder="Masukan NIK"> </td>
+					<td> <input type="text" class="form-control" name="NIK" placeholder="Masukan NIK"> </td>
 				</tr>
 				<tr>
 					<td> <h4>NAMA KEPALA</h4> </td>
@@ -53,10 +53,10 @@
 </div>
 
 
-<?php 
+<?php
 
 if (isset($_POST['simpan'])) {
-	
+
 	$nik 		  = $_POST['NIK'];
 	$nama         = $_POST['NAMA'];
 	$alamat       = $_POST['ALAMAT'];

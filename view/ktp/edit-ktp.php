@@ -14,9 +14,10 @@ $data = $objAdmin->editKTP($nik)->fetch_object();
  	<form class="" id="" method="POST" action="">
 
  		<table align="center">
- 				<tr>
+        <input type="hidden" name="id_ktp" value="<?=$data->id_ktp ?>">
+    		<tr>
  					<td> <h4>NIK</h4> </td>
- 					<td> <input type="number" class="form-control" name="NIK" placeholder="Masukan NIK KTP" value="<?=$data->nik ?>" readonly> </td>
+ 					<td> <input type="number" class="form-control" name="NIK" placeholder="Masukan NIK KTP" value="<?=$data->nik ?>" > </td>
  				</tr>
  				<tr>
  					<td> <h4>NAMA</h4> </td>
@@ -68,7 +69,7 @@ $data = $objAdmin->editKTP($nik)->fetch_object();
  <?php
 
  if (isset($_POST['update'])) {
-
+  $id_ktp 		      = $_POST['id_ktp'];
  	$nik 		      = $_POST['NIK'];
  	$nama         = $_POST['NAMA'];
  	$tgl_lahir    = $_POST['TGL_LAHIR'];
@@ -80,7 +81,7 @@ $data = $objAdmin->editKTP($nik)->fetch_object();
  	$agama        = $_POST['AGAMA'];
  	$kewar        = $_POST['KEWARGANEGARAAN'];
 
- 	$update = $objAdmin->updateKTP($nik, $nama, $tgl_lahir, $tempat_lahir, $jekel, $alamat, $rt, $rw, $agama, $kewar);
+ 	$update = $objAdmin->updateKTP($id_ktp, $nik, $nama, $tgl_lahir, $tempat_lahir, $jekel, $alamat, $rt, $rw, $agama, $kewar);
 
  	if ($update) {
  		echo '

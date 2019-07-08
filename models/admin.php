@@ -57,11 +57,11 @@ class Admin
   {
 	  	$db  = $this->mysqli->conn;
       $date_permohonan = date('Y/m/d');
-	  	$sql = " INSERT INTO ktp  VALUES ('$nik', '$nama', '$tgl_lahir', '$tempat_lahir', '$jekel', '$alamat', '$rt', '$rw', '$agama', '$kewar','0','$date_permohonan') " ;
-      $query = $db->query($sql);
-      $sql = " INSERT INTO hasil_cetak (NIK,nama,tgl_permohonan,jenis_permohonan) VALUES ('$nik','$nama','$date_permohonan','KTP') " ;
-	  	$query = $db->query($sql);
-	  	if ($query) {
+	  	$sql1 = " INSERT INTO ktp (nik,nama,tanggal_lahir,tempat_lahir,jekel,alamat,rt,rw,agama,kewarganegaraan,status_cetak,tanggal_permohonan)  VALUES ('$nik', '$nama', '$tgl_lahir', '$tempat_lahir', '$jekel', '$alamat', '$rt', '$rw', '$agama', '$kewar','0','$date_permohonan') " ;
+      $query1 = $db->query($sql1);
+      $sql2 = " INSERT INTO hasil_cetak (NIK,nama,tgl_permohonan,jenis_permohonan) VALUES ('$nik','$nama','$date_permohonan','KTP') " ;
+	  	$query2 = $db->query($sql2);
+	  	if ($query1) {
 	  		return true;
 	  	}else{
 	  		return false;
@@ -85,10 +85,10 @@ class Admin
     return $query;
   }
 
-  public function updateKTP($nik, $nama, $tgl_lahir, $tempat_lahir, $jekel, $alamat, $rt, $rw, $agama, $kewar)
+  public function updateKTP($id_ktp, $nik, $nama, $tgl_lahir, $tempat_lahir, $jekel, $alamat, $rt, $rw, $agama, $kewar)
   {
     $db = $this->mysqli->conn;
-    $sql = " UPDATE ktp SET nama = '$nama', tanggal_lahir = '$tgl_lahir', tempat_lahir = '$tempat_lahir', jekel = '$jekel', alamat = '$alamat', rt = '$rt', rw = '$rw', agama = '$agama', kewarganegaraan = '$kewar' WHERE nik = '$nik' ";
+    $sql = " UPDATE ktp SET nama = '$nama', tanggal_lahir = '$tgl_lahir', tempat_lahir = '$tempat_lahir', jekel = '$jekel', alamat = '$alamat', rt = '$rt', rw = '$rw', agama = '$agama', kewarganegaraan = '$kewar' WHERE id_ktp = '$id_ktp' ";
     $query = $db->query($sql);
     if ($query) {
         return true;
@@ -117,11 +117,13 @@ class Admin
   		$db = $this->mysqli->conn;
       $date_permohonan = date('Y/m/d');
 
-  		$sql = " INSERT INTO kartu_keluarga VALUES ('$nik', '$nama', '$alamat', '$pos', '$tlp', '$pro', '$kab', '$kec', '$kel','0','$date_permohonan') ";
-  		$query = $db->query($sql);
-      $sql = " INSERT INTO hasil_cetak (NIK,nama,tgl_permohonan,jenis_permohonan) VALUES ('$nik','$nama','$date_permohonan','Kartu Keluarga') ";
-  		$query = $db->query($sql);
-  		if ($query) {
+  		$sql1 = " INSERT INTO kartu_keluarga
+      (nik,nama,alamat,kodepos,telp,kodenopro,kodenokab,kdoenokec,kodenokel,status_cetak,tanggal_permohonan)
+      VALUES ('$nik', '$nama', '$alamat', '$pos', '$tlp', '$pro', '$kab', '$kec', '$kel','0','$date_permohonan') ";
+  		$query1 = $db->query($sql1);
+      $sql2 = " INSERT INTO hasil_cetak (NIK,nama,tgl_permohonan,jenis_permohonan) VALUES ('$nik','$nama','$date_permohonan','Kartu Keluarga') ";
+  		$query2 = $db->query($sql2);
+  		if ($query1) {
 	  		return true;
 	  	}else{
 	  		return false;
@@ -144,10 +146,10 @@ class Admin
     return $query;
   }
 
-  public function updateKK($nik, $nama, $alamat, $pos, $tlp, $pro, $kab, $kec, $kel)
+  public function updateKK($id_kk,$nik, $nama, $alamat, $pos, $tlp, $pro, $kab, $kec, $kel)
   {
     $db = $this->mysqli->conn;
-    $sql = " UPDATE kartu_keluarga SET nama = '$nama', alamat = '$alamat', kodepos = '$pos', telp = '$tlp', kodenopro = '$pro', kodenokab = '$kab', kdoenokec = '$kec', kodenokel = '$kel' WHERE nik = '$nik' ";
+    $sql = " UPDATE kartu_keluarga SET nama = '$nama', alamat = '$alamat', kodepos = '$pos', telp = '$tlp', kodenopro = '$pro', kodenokab = '$kab', kdoenokec = '$kec', kodenokel = '$kel' WHERE id_kk = '$id_kk' ";
     $query = $db->query($sql);
     if ($query) {
         return true;
@@ -176,7 +178,10 @@ class Admin
   		$db = $this->mysqli->conn;
       $date_permohonan = date('Y/m/d');
 
-  		$sql = " INSERT INTO akte_kelahiran VALUES ('$id', '$nama', '$tgl', '$tempat', '$ayah', '$ibu', '$ke','0','$date_permohonan') ";
+  		$sql = " INSERT INTO akte_kelahiran
+        (no_akte,nama,tanggal_lahir,tempat_lahir,nama_ayah,nama_ibu,anakke,status_cetak,tanggal_permohonan)
+        VALUES
+        ('$id', '$nama', '$tgl', '$tempat', '$ayah', '$ibu', '$ke','0','$date_permohonan') ";
   		$query = $db->query($sql);
       $sql = " INSERT INTO hasil_cetak (NIK,nama,tgl_permohonan,jenis_permohonan) VALUES ('$id','$nama','$date_permohonan','Akte Kelahiran') ";
   		$query = $db->query($sql);
@@ -203,10 +208,10 @@ class Admin
     return $query;
   }
 
-  public function updateAKTE($id, $nama, $tgl, $tempat, $ayah, $ibu, $ke)
+  public function updateAKTE($id_akte, $id, $nama, $tgl, $tempat, $ayah, $ibu, $ke)
   {
     $db = $this->mysqli->conn;
-    $sql = " UPDATE akte_kelahiran SET nama = '$nama', tanggal_lahir = '$tgl', tempat_lahir = '$tempat', nama_ayah = '$ayah', nama_ibu = '$ibu', anakke = '$ke' WHERE id_akte = '$id' ";
+    $sql = " UPDATE akte_kelahiran SET nama = '$nama', tanggal_lahir = '$tgl', tempat_lahir = '$tempat', nama_ayah = '$ayah', nama_ibu = '$ibu', anakke = '$ke' WHERE id_akte = '$id_akte' ";
     $query = $db->query($sql);
     if ($query) {
       return true;
@@ -260,9 +265,9 @@ class Admin
     }else {
       $status_baru = 0;
     }
-    $sql = " UPDATE ktp SET status_cetak = '$status_baru' WHERE nik = '$id' ";
+    $sql = " UPDATE ktp SET status_cetak = '$status_baru' WHERE nik = '$id'  ";
     $query = $db->query($sql);
-    $sql = " UPDATE hasil_cetak SET status = '$status_baru' WHERE NIK = '$id' ";
+    $sql = " UPDATE hasil_cetak SET status = '$status_baru' WHERE NIK = '$id' && jenis_permohonan = 'KTP' ";
     $query = $db->query($sql);
     if ($query) {
       return true;
@@ -279,9 +284,9 @@ class Admin
     }else {
       $status_baru = 0;
     }
-    $sql = " UPDATE akte_kelahiran SET status_cetak = '$status_baru' WHERE id_akte = '$id' ";
+    $sql = " UPDATE akte_kelahiran SET status_cetak = '$status_baru' WHERE no_akte = '$id' ";
     $query = $db->query($sql);
-    $sql = " UPDATE hasil_cetak SET status = '$status_baru' WHERE NIK = '$id' ";
+    $sql = " UPDATE hasil_cetak SET status = '$status_baru' WHERE NIK = '$id' && jenis_permohonan = 'Akte Kelahiran' ";
     $query = $db->query($sql);
     if ($query) {
       return true;
@@ -300,7 +305,7 @@ class Admin
     }
     $sql = " UPDATE kartu_keluarga SET status_cetak = '$status_baru' WHERE nik = '$id' ";
     $query = $db->query($sql);
-    $sql = " UPDATE hasil_cetak SET status = '$status_baru' WHERE NIK = '$id' ";
+    $sql = " UPDATE hasil_cetak SET status = '$status_baru' WHERE NIK = '$id' && jenis_permohonan = 'Kartu Keluarga'";
     $query = $db->query($sql);
     if ($query) {
       return true;

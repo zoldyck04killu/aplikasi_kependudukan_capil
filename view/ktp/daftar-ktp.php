@@ -10,7 +10,7 @@
 		<table align="center">
 				<tr>
 					<td> <h4>NIK</h4> </td>
-					<td> <input type="number" class="form-control" name="NIK" placeholder="Masukan NIK KTP"> </td>
+					<td> <input type="text" class="form-control" name="NIK" placeholder="Masukan NIK KTP"> </td>
 				</tr>
 				<tr>
 					<td> <h4>NAMA</h4> </td>

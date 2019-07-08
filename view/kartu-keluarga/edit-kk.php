@@ -14,6 +14,7 @@ $data = $objAdmin->editKK($nik)->fetch_object();
 	<form class="" id="" method="POST" action="">
 
 		<table align="center">
+        <input type="hidden" name="id_kk" value="<?=$data->id_kk ?>">
 				<tr>
 					<td> <h4>NIK</h4> </td>
 					<td> <input type="number" class="form-control" name="NIK" placeholder="Masukan NIK" value="<?=$data->nik ?>" readonly> </td>
@@ -63,6 +64,7 @@ $data = $objAdmin->editKK($nik)->fetch_object();
 
 if (isset($_POST['update'])) {
 
+  $id_kk 		      = $_POST['id_kk'];
 	$nik 		      = $_POST['NIK'];
 	$nama         = $_POST['NAMA'];
 	$alamat       = $_POST['ALAMAT'];
@@ -73,7 +75,7 @@ if (isset($_POST['update'])) {
 	$kec          = $_POST['KEC'];
 	$kel          = $_POST['KEL'];
 
-	$update = $objAdmin->updateKK($nik, $nama, $alamat, $pos, $tlp, $pro, $kab, $kec, $kel);
+	$update = $objAdmin->updateKK($id_kk,$nik, $nama, $alamat, $pos, $tlp, $pro, $kab, $kec, $kel);
 
 	if ($update) {
     echo '

@@ -30,7 +30,7 @@
       while ($a = $data->fetch_object()) {
       ?>
       <tr>
-        <td><?=$a->id_akte ?></td>
+        <td><?=$a->no_akte ?></td>
         <td><?=$a->nama ?></td>
         <td><?=$a->tanggal_lahir ?></td>
         <td><?=$a->tempat_lahir ?></td>
@@ -41,10 +41,10 @@
           <td>
             <?php
             if ($a->status_cetak == 0) { ?>
-              <a href="?view=status-cetak-akte&nik=<?=$a->id_akte ?>&status=<?=$a->status_cetak ?>" class="btn btn-sm btn-dark">Belum Cetak</a>
+              <a href="?view=status-cetak-akte&nik=<?=$a->no_akte ?>&status=<?=$a->status_cetak ?>" class="btn btn-sm btn-dark">Belum Cetak</a>
             <?php
             }else{ ?>
-            <a href="?view=status-cetak-akte&nik=<?=$a->id_akte ?>&status=<?=$a->status_cetak ?>" class="btn btn-sm btn-success">Sudah Cetak</a>
+            <a href="?view=status-cetak-akte&nik=<?=$a->no_akte ?>&status=<?=$a->status_cetak ?>" class="btn btn-sm btn-success">Sudah Cetak</a>
             <?php
             }
             ?>
