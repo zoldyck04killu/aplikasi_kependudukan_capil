@@ -55,6 +55,7 @@
           </td>
         <td>
           <div class="btn-group">
+            <a href="view/laporan/laporan-kk.php?nik=<?=$a->nik ?>" class="btn btn-sm btn-warning">Laporan</a>
             <a href="?view=edit-kk&nik=<?=$a->nik ?>" class="btn btn-sm btn-info">Edit</a>
             <a href="?view=hapus-kk&nik=<?=$a->nik ?>" onclick="return confirm('Hapus data ?')" class="btn btn-sm btn-danger">Hapus</a>
           </div>

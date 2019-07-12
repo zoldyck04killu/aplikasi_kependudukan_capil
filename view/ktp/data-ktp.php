@@ -57,6 +57,7 @@
         </td>
         <td>
           <div class="btn-group">
+            <a href="view/laporan/laporan-ktp.php?nik=<?=$a->nik ?>" class="btn btn-sm btn-warning">Laporan</a>
             <a href="?view=edit-ktp&nik=<?=$a->nik ?>" class="btn btn-sm btn-info">Edit</a>
             <a href="?view=hapus-ktp&nik=<?=$a->nik ?>" onclick="return confirm('Hapus data ?')" class="btn btn-sm btn-danger">Hapus</a>
           </div>

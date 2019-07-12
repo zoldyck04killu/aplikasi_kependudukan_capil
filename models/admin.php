@@ -77,6 +77,16 @@ class Admin
     return $query;
   }
 
+public function showKTP_perNik($nik)
+{
+  // var_dump($nik);
+  // die();
+  $db = $this->mysqli->conn;
+  $sql = " SELECT * FROM ktp WHERE nik='$nik'";
+  $query = $db->query($sql);
+  return $query;
+}
+
   public function editKTP($nik)
   {
     $db = $this->mysqli->conn;
@@ -134,6 +144,14 @@ class Admin
   {
     $db = $this->mysqli->conn;
     $sql = " SELECT * FROM kartu_keluarga ";
+    $query = $db->query($sql);
+    return $query;
+  }
+
+  public function showKK_perNik($nik)
+  {
+    $db = $this->mysqli->conn;
+    $sql = " SELECT * FROM kartu_keluarga WHERE nik='$nik' ";
     $query = $db->query($sql);
     return $query;
   }
@@ -196,6 +214,14 @@ class Admin
   {
     $db = $this->mysqli->conn;
     $sql = " SELECT * FROM akte_kelahiran ";
+    $query = $db->query($sql);
+    return $query;
+  }
+
+  public function showAKTE_perNik($id)
+  {
+    $db = $this->mysqli->conn;
+    $sql = " SELECT * FROM akte_kelahiran WHERE id_akte='$id' ";
     $query = $db->query($sql);
     return $query;
   }

@@ -51,6 +51,7 @@
           </td>
         <td>
           <div class="btn-group">
+            <a href="view/laporan/laporan-akte.php?id=<?=$a->id_akte ?>" class="btn btn-sm btn-warning">Laporan</a>
             <a href="?view=edit-akte&id=<?=$a->id_akte ?>" class="btn btn-sm btn-info">Edit</a>
             <a href="?view=hapus-akte&id=<?=$a->id_akte ?>" onclick="return confirm('Hapus data ?')" class="btn btn-sm btn-danger">Hapus</a>
           </div>
